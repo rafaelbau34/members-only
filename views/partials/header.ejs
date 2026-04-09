@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Clubhouse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #F8F9FA; }
+    .card-bg { background-color: #E2E8E4; }
+    .card-alt-bg { background-color: #E3F2FD; }
+  </style>
+</head>
+<body class="text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm py-4">
+    <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-gray-900">The Clubhouse</a>
+      <nav class="space-x-4">
+        <% if (locals.currentUser) { %>
+          <span class="text-sm text-gray-600">Welcome, <%= currentUser.first_name %></span>
+          <a href="/create-message" class="text-blue-600 hover:underline">New Message</a>
+          <% if (!currentUser.membership_status) { %>
+            <a href="/join-club" class="text-blue-600 hover:underline">Join Club</a>
+          <% } %>
+          <a href="/logout" class="text-red-600 hover:underline">Log Out</a>
+        <% } else { %>
+          <a href="/login" class="text-blue-600 hover:underline">Log In</a>
+          <a href="/sign-up" class="text-blue-600 hover:underline">Sign Up</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full">

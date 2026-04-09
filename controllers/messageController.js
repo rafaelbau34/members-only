@@ -44,7 +44,7 @@ exports.createMessagePost = [
 exports.deleteMessagePost = async (req, res, next) => {
   if (!req.user || !req.user.is_admin) return res.redirect("/access-denied");
   try {
-    await db.deletMessage(req.params.id);
+    await db.deleteMessage(req.params.id);
     res.redirect("/");
   } catch (err) {
     next(err);
